@@ -7,16 +7,18 @@
     "node": ">=20.10.0"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "cp .env.development .env.local && next dev",
+    "build": "cp .env.production .env.local && next build",
     "start": "next start",
-    "lint": "next lint"
+    "type-check": "tsc --noemit",
+    "lint": "npm run type-check && next lint --max-warnings=1 --fix"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "next": "14.0.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-redux": "^8.1.3"
   },
   "devDependencies": {
     "@types/node": "^20",
