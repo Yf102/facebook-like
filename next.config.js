@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   async rewrites() {
-    const API = process.env.NEXT_PUBLIC_API;
+    const API = process.env.API;
     console.log(`Proxy created: /api -> : ${API}`);
     return [
       {

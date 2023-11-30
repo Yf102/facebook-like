@@ -1,11 +1,28 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {
+  BaseQueryFn,
+  createApi,
+  FetchArgs,
+  fetchBaseQuery,
+  FetchBaseQueryError,
+  FetchBaseQueryMeta,
+} from "@reduxjs/toolkit/query/react";
+import { ApiErrorType } from "@/src/services/types/Error";
 
-const basePath = process.env?.API
-  ? process.env.API
-  : process.env.NEXT_PUBLIC_BASE_PATH;
-
-const baseQuery = fetchBaseQuery({
-  baseUrl: basePath + "/api/",
+const baseQuery: BaseQueryFn<
+  string | FetchArgs,
+  unknown,
+  ApiErrorType | FetchBaseQueryError,
+  {},
+  FetchBaseQueryMeta
+> = fetchBaseQuery({
+  baseUrl: "/api/",
+  prepareHeaders(headers) {
+    if (process.env.NEXT_PUBLIC_X_API_KEY) {
+      headers.set("accept", "application/json");
+      headers.set("X-Api-Key", process.env.NEXT_PUBLIC_X_API_KEY);
+    }
+    return headers;
+  },
 });
 
 // initialize an empty api service that we'll inject endpoints into later as needed
