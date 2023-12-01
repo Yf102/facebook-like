@@ -40,35 +40,25 @@ const Header = () => {
         onClose={() => setIsLeftModalOpen(false)}
         openFrom="left"
       >
-        <div>Елемент 1</div>
-        <div>Елемент 2</div>
-        <div>Елемент 3</div>
-        <div>Елемент 4</div>
-        <div>Елемент 5</div>
-        <div>Елемент 6</div>
-        <div>Елемент 7</div>
-        <div>Елемент 8</div>
-        <div>Елемент 9</div>
-        <div>Елемент 10</div>
+        {Array.from({ length: 10 }).map((_, i) => {
+          return <ModalElement key={i} count={i + 1} />;
+        })}
       </Modal>
       <Modal
         isOpen={isRightModalOpen}
         onClose={() => setIsRightModalOpen(false)}
         openFrom="right"
       >
-        <div>Елемент 1</div>
-        <div>Елемент 2</div>
-        <div>Елемент 3</div>
-        <div>Елемент 4</div>
-        <div>Елемент 5</div>
-        <div>Елемент 6</div>
-        <div>Елемент 7</div>
-        <div>Елемент 8</div>
-        <div>Елемент 9</div>
-        <div>Елемент 10</div>
+        {Array.from({ length: 10 }).map((_, i) => {
+          return <ModalElement key={i} count={i + 1} />;
+        })}
       </Modal>
     </>
   );
+};
+
+const ModalElement = ({ count }: { count: number }) => {
+  return <div className={styles["modal-element"]}>Елемент {count}</div>;
 };
 
 export default Header;
