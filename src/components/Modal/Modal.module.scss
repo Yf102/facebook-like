@@ -3,9 +3,9 @@
 }
 
 $md-size: 1023px;
+$overlay-color: rgba(0, 0, 0, 0.5);
 
 .modal {
-  //@apply hidden lg:flex;
   position: absolute;
   top: 0;
   left: 0;
@@ -26,7 +26,7 @@ $md-size: 1023px;
 
       &.is-right {
         @media only screen and (max-width: $md-size) {
-            @include animation(close-in-right);
+          @include animation(close-in-right);
         }
       }
     }
@@ -57,18 +57,24 @@ $md-size: 1023px;
     overflow: auto;
 
     &.is-left {
-      @apply lg:left-0;
+      @apply left-[-100%] lg:left-0;
       @media only screen and (max-width: $md-size) {
-        left: -100%;
         @include animation(pop-in-left);
+      }
+
+      @media only screen and (min-width: $md-size) {
+        box-shadow: 3px 2px 8px -3px rgba(0,0,0,0.89);
       }
     }
 
     &.is-right {
-      @apply lg:right-0;
+      @apply right-[-100%] lg:right-0;
       @media only screen and (max-width: $md-size) {
-        right: -100%;
         @include animation(pop-in-right);
+      }
+
+      @media only screen and (min-width: $md-size) {
+        box-shadow: -3px 2px 8px -3px rgba(0, 0, 0, 0.89);
       }
     }
   }
@@ -76,7 +82,7 @@ $md-size: 1023px;
 
 @keyframes fade-out {
   0% {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: $overlay-color;
   }
   100% {
     background-color: transparent;
@@ -87,7 +93,7 @@ $md-size: 1023px;
     background-color: transparent;
   }
   100% {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: $overlay-color;
   }
 }
 
