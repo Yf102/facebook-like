@@ -8,11 +8,8 @@ const LobbyClient = () => {
   // const { data, error } = useGetPostsQuery({ page: 1 });
 
   return (
-    <div className={styles["page"]}>
-      <Header />
-      <div className={styles["page-container"]}>
-        {/*{data ? JSON.stringify(data) : JSON.stringify(error)}*/}
-      </div>
+    <div className={styles["page-container"]}>
+      {/*{data ? JSON.stringify(data) : JSON.stringify(error)}*/}
     </div>
   );
 };
