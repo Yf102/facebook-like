@@ -16,6 +16,15 @@ const Modal = ({
   isOpen,
   openFrom = "left",
 }: ModalProps) => {
+  const [isClosing, setIsClosing] = useState(false);
+  const prevIsOpen = useRef<boolean>();
+
+  const [wrapper, setWrapper] = useState<Element | null>(null);
+  useEffect(() => {
+    const element = document.body;
+    setWrapper(element);
+  }, []);
+
   useEffect(() => {
     function handler(e: KeyboardEvent) {
       if (e.key === "Escape" && typeof onClose === "function") onClose();
@@ -28,18 +37,32 @@ const Modal = ({
     };
   }, [onClose]);
 
+  useLayoutEffect(() => {
+    if (!isOpen && prevIsOpen.current) {
+      setIsClosing(true);
+    }
+
+    prevIsOpen.current = isOpen;
+  }, [isOpen]);
+
+  if (wrapper === null) return null;
+
   return createPortal(
     <div
-      className={cn(styles.modal, {
-        [styles["is-open"]]: isOpen,
+      className={cn("lg:flex", styles.modal, {
+        hidden: !isOpen && !isClosing,
+        [styles["closing"]]: isClosing,
       })}
+      onAnimationEnd={() => {
+        setIsClosing(false);
+      }}
     >
       <div className={styles.overlay} onClick={onClose}></div>
       <div className={cn(styles["modal-body"], styles[`is-${openFrom}`])}>
         {children}
       </div>
     </div>,
-    document?.body,
+    wrapper,
   );
 };
 

@@ -1,11 +1,11 @@
-@mixin animation-speed($side, $function) {
-  animation: pop-in-#{$side} 300ms forwards #{$function};
+@mixin animation($side) {
+  animation: #{$side} 300ms forwards ease-in-out;
 }
 
 $md-size: 1023px;
 
 .modal {
-  @apply hidden lg:flex;
+  //@apply hidden lg:flex;
   position: absolute;
   top: 0;
   left: 0;
@@ -16,36 +16,34 @@ $md-size: 1023px;
   align-items: center;
   z-index: 10000;
 
-  &.is-open {
-    @apply block;
-    .is-left {
-      @media only screen and (max-width: $md-size) {
-        //@apply block;
-        @include animation-speed('left', 'ease-in-out');
+  &.closing {
+    .modal-body {
+      &.is-left {
+        @media only screen and (max-width: $md-size) {
+          @include animation(close-in-left);
+        }
       }
-    }
 
-    .is-right {
-      @media only screen and (max-width: $md-size) {
-        //@apply block;
-        @include animation-speed('right', 'ease-in-out');
+      &.is-right {
+        @media only screen and (max-width: $md-size) {
+            @include animation(close-in-right);
+        }
       }
     }
 
     .overlay {
-      @media only screen and (max-width: $md-size) {
-        @apply block;
-        animation: fade-in 250ms forwards ease-in-out;
-      }
+      @include animation(fade-out);
     }
   }
 
   .overlay {
-    @apply hidden;
+    @apply lg:hidden;
     background-color: transparent;
     width: 100%;
     height: 100%;
-    animation: fade-in 250ms forwards;
+    @media only screen and (max-width: $md-size) {
+      @include animation(fade-in);
+    }
   }
 
   .modal-body {
@@ -59,28 +57,69 @@ $md-size: 1023px;
     overflow: auto;
 
     &.is-left {
-      @apply left-[-100%] lg:left-0;
+      @apply lg:left-0;
+      @media only screen and (max-width: $md-size) {
+        left: -100%;
+        @include animation(pop-in-left);
+      }
     }
 
     &.is-right {
-      @apply right-[-100%] lg:right-0;
+      @apply lg:right-0;
+      @media only screen and (max-width: $md-size) {
+        right: -100%;
+        @include animation(pop-in-right);
+      }
     }
   }
 }
 
+@keyframes fade-out {
+  0% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
 @keyframes fade-in {
- 100% {
-   background-color: rgba(0, 0, 0, 0.5);
- }
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
 
+@keyframes close-in-left {
+  0% {
+      left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
 @keyframes pop-in-left {
+  0% {
+    left: -100%;
+  }
   100% {
     left: 0;
   }
 }
 
+@keyframes close-in-right {
+  0% {
+    right: 0;
+  }
+  100% {
+      right: -100%;
+  }
+}
 @keyframes pop-in-right {
+  0% {
+    right: -100%;
+  }
   100% {
     right: 0;
   }
