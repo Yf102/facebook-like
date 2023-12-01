@@ -1,0 +1,20 @@
+.page {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 80rem;
+  min-height: 100%;
+  padding: 0;
+  border-radius: 0;
+  backface-visibility: hidden;
+  overflow: hidden;
+
+  .page-container {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 50px);
+    margin-top: 50px;
+    display: flex;
+    overflow: auto;
+  }
+}

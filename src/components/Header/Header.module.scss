@@ -1,0 +1,25 @@
+.header-wrapper {
+  @apply fixed top-0 left-0 right-0 ;
+  height: 50px;
+  color: hsl(200, 20%, 95%);
+  background: hsl(200, 100%, 10%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+
+  z-index: 10000;
+
+  .nav-text-large {
+    font-size: 2rem;
+  }
+
+  .nav-list {
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    align-items: stretch;
+  }
+}
