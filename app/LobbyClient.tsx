@@ -11,7 +11,6 @@ const LobbyClient = () => {
     <div className={styles["page"]}>
       <Header />
       <div className={styles["page-container"]}>
-        <div id="modal-root"></div>
         {/*{data ? JSON.stringify(data) : JSON.stringify(error)}*/}
       </div>
     </div>

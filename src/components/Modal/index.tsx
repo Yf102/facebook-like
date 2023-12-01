@@ -1,3 +1,4 @@
+"use client";
 import { createPortal } from "react-dom";
 import { useEffect, ReactNode, useRef, useLayoutEffect, useState } from "react";
 import cn from "classnames";
@@ -15,9 +16,6 @@ const Modal = ({
   isOpen,
   openFrom = "left",
 }: ModalProps) => {
-  const [isClosing, setIsClosing] = useState(false);
-  const prevIsOpen = useRef<boolean>();
-
   useEffect(() => {
     function handler(e: KeyboardEvent) {
       if (e.key === "Escape" && typeof onClose === "function") onClose();
@@ -30,27 +28,18 @@ const Modal = ({
     };
   }, [onClose]);
 
-  useLayoutEffect(() => {
-    if (!isOpen && prevIsOpen.current) {
-      setIsClosing(true);
-    }
-
-    prevIsOpen.current = isOpen;
-  }, [isOpen]);
-
-  if (!isOpen && !isClosing) return null;
-
   return createPortal(
     <div
-      className={cn(styles.modal, { [styles["closing"]]: isClosing })}
-      onAnimationEnd={() => setIsClosing(false)}
+      className={cn(styles.modal, {
+        [styles["is-open"]]: isOpen,
+      })}
     >
       <div className={styles.overlay} onClick={onClose}></div>
       <div className={cn(styles["modal-body"], styles[`is-${openFrom}`])}>
         {children}
       </div>
     </div>,
-    document.getElementById("modal-root") as HTMLElement,
+    document?.body,
   );
 };
 

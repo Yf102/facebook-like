@@ -16,8 +16,8 @@
   }
 
   .nav-list {
+    @apply flex lg:hidden;
     margin: 0;
-    display: flex;
     gap: 1rem;
     list-style: none;
     align-items: stretch;
