@@ -21,7 +21,7 @@ const Modal = ({
 
   const [wrapper, setWrapper] = useState<Element | null>(null);
   useEffect(() => {
-    const element = document.body;
+    const element = document.getElementById("modal-root");
     setWrapper(element);
   }, []);
 

@@ -17,6 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${font.variable} font-sans`} id="app-main">
         <Providers>{children}</Providers>
+        <div id="modal-root"></div>
       </body>
     </html>
   );
