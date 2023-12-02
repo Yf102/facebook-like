@@ -49,7 +49,7 @@ const Modal = ({
 
   return createPortal(
     <div
-      className={cn("lg:flex", styles.modal, {
+      className={cn("lg:flex", styles.modal, styles[`is-${openFrom}`], {
         hidden: !isOpen && !isClosing,
         [styles["closing"]]: isClosing,
       })}
@@ -58,9 +58,7 @@ const Modal = ({
       }}
     >
       <div className={styles.overlay} onClick={onClose}></div>
-      <div className={cn(styles["modal-body"], styles[`is-${openFrom}`])}>
-        {children}
-      </div>
+      <div className={cn(styles["modal-body"])}>{children}</div>
     </div>,
     wrapper,
   );

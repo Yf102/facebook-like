@@ -10,7 +10,6 @@ const NavClient = () => {
 
   return (
     <>
-      {" "}
       <ul className={styles["nav-list"]}>
         <li>
           <button

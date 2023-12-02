@@ -17,6 +17,7 @@ const config: Config = {
       },
     },
     width: {
+      full: "100%",
       "modal-mobile": "80%",
       "modal-desktop": "12%",
       "mobile-page": "100%",

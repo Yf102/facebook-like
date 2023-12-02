@@ -6,35 +6,12 @@ $md-size: 1023px;
 $overlay-color: rgba(0, 0, 0, 0.5);
 
 .modal {
+  @apply inset-0;
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
   margin-top: 50px;
   justify-content: center;
   align-items: center;
   z-index: 10000;
-
-  &.closing {
-    .modal-body {
-      &.is-left {
-        @media only screen and (max-width: $md-size) {
-          @include animation(close-in-left);
-        }
-      }
-
-      &.is-right {
-        @media only screen and (max-width: $md-size) {
-          @include animation(close-in-right);
-        }
-      }
-    }
-
-    .overlay {
-      @include animation(fade-out);
-    }
-  }
 
   .overlay {
     @apply lg:hidden;
@@ -46,8 +23,14 @@ $overlay-color: rgba(0, 0, 0, 0.5);
     }
   }
 
+  &.closing {
+    .overlay {
+      @include animation(fade-out);
+    }
+  }
+
   .modal-body {
-    @apply w-modal-mobile lg:w-modal-desktop;
+    @apply w-modal-mobile lg:w-full;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -55,8 +38,12 @@ $overlay-color: rgba(0, 0, 0, 0.5);
     color: #000000;
     z-index: 1;
     overflow: auto;
+  }
 
-    &.is-left {
+  &.is-left {
+    @apply lg:left-0 lg:right-auto lg:w-modal-desktop;
+
+    .modal-body {
       @apply left-[-100%] lg:left-0;
       @media only screen and (max-width: $md-size) {
         @include animation(pop-in-left);
@@ -67,7 +54,18 @@ $overlay-color: rgba(0, 0, 0, 0.5);
       }
     }
 
-    &.is-right {
+    &.closing {
+      .modal-body {
+        @media only screen and (max-width: $md-size) {
+          @include animation(close-in-left);
+        }
+      }
+    }
+  }
+
+  &.is-right {
+    @apply lg:right-0 lg:left-auto lg:w-modal-desktop;
+    .modal-body {
       @apply right-[-100%] lg:right-0;
       @media only screen and (max-width: $md-size) {
         @include animation(pop-in-right);
@@ -75,6 +73,14 @@ $overlay-color: rgba(0, 0, 0, 0.5);
 
       @media only screen and (min-width: $md-size) {
         box-shadow: -3px 2px 8px -3px rgba(0, 0, 0, 0.89);
+      }
+    }
+
+    &.closing {
+      .modal-body {
+        @media only screen and (max-width: $md-size) {
+          @include animation(close-in-right);
+        }
       }
     }
   }

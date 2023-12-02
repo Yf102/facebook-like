@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "@/src/components/Header/Header.module.scss";
-import Modal from "@/src/components/Modal";
 import NavClient from "@/src/components/Header/NavClient";
 
 const Header = () => {
