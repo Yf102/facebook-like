@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "@/src/styles/globals.css";
+import "@/src/polyfills/intersectionObserverPolyfill.js";
 import { Providers } from "@/src/store/redux/providers";
 import { font } from "@/src/const/font";
 

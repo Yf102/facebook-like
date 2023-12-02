@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Post.module.scss";
 import Image from "next/image";
 import { Post } from "@/src/services/types/Posts";
-import LoadMore from "@/src/components/LoadMore";
 
 type PostsProps = { posts: Post[] };
 const Posts = ({ posts }: PostsProps) => {
@@ -14,7 +13,7 @@ const Posts = ({ posts }: PostsProps) => {
             <h2>{title}</h2>
             {image && (
               <div className={styles["img-wrapper"]}>
-                <Image src={image} alt={title} layout="fill" />
+                <Image src={image} alt={title} fill />
               </div>
             )}
             <div>{content}</div>
