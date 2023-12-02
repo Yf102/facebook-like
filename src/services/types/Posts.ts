@@ -21,7 +21,3 @@ export type Post = {
 export type PostsParamsType = {
   page: number;
 };
-
-type ErrorWrapperType = {
-  error?: string;
-};

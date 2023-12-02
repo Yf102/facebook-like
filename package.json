@@ -30,6 +30,7 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
+    "eslint-plugin-unused-imports": "^3.0.0",
     "postcss": "^8",
     "postcss-import": "^15.1.0",
     "sass": "^1.69.5",
