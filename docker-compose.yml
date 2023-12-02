@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  posts-app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        EXPOSE_PORT: 3000
+        NODE_VERSION: 20.10.0
+    ports:
+      - 3000:3000

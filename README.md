@@ -14,11 +14,16 @@ npm build
 npm run start
 ```
 
-## Linters support
+## Docker
+Build Docker image
+```bash
+docker-compose up --build -d
+```
 
-Most eslint support and config should automatically work on npm install with dev dependencies
-For taiwindcss please refer to:
-[a tailwind docks](https://tailwindcss.com/docs/editor-setup)
+From the second time onwards run Docker image
+```bash
+docker-compose up -d
+```
 
 ## Git Workflow
 
