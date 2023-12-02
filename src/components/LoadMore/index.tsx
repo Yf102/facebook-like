@@ -8,8 +8,8 @@ import { fetchPosts } from "@/src/actions/fetch-posts";
 import Posts from "@/src/components/Posts";
 
 const LoadMore = () => {
+  const [ref, inView] = useInView();
   const [posts, setPosts] = useState<Post[]>([]);
-
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,15 +28,19 @@ const LoadMore = () => {
   return (
     <>
       <Posts posts={posts} />
-      <InView onChange={loadMorePosts} threshold={0} fallbackInView={true}>
-        {({ ref }) => (
-          <div
-            ref={ref}
-            className="flex justify-center items-center w-full mb-10"
-          >
-            <Spinner />
-          </div>
-        )}
+      <InView
+        onChange={(inView) => {
+          inView && loadMorePosts();
+        }}
+        threshold={0}
+        fallbackInView={true}
+      >
+        <div
+          ref={ref}
+          className="flex justify-center items-center w-full mb-10"
+        >
+          <Spinner />
+        </div>
       </InView>
     </>
   );
