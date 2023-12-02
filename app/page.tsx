@@ -1,6 +1,6 @@
 import styles from "@/src/styles/Page.module.scss";
 import Header from "@/src/components/Header";
-import React, { Suspense } from "react";
+import React from "react";
 import { store } from "@/src/store/store";
 import { getPosts } from "@/src/services/postsApi";
 import Posts from "@/src/components/Posts";
@@ -35,13 +35,9 @@ export default async function Home() {
   return (
     <div className={styles["page"]}>
       <Header />
-      <div className={styles["page-container"]}>
-        <div className="w-full">
-          <Posts posts={data?.posts || []} />
-          <Suspense fallback={<div>Loading...</div>}>
-            <DynamicLoadMore postsSSR={data?.posts} pageSSR={1} />
-          </Suspense>
-        </div>
+      <div className={styles["page-container"]} id="scrollable-content">
+        <Posts posts={data?.posts || []} />
+        <DynamicLoadMore postsSSR={data?.posts} pageSSR={1} />
       </div>
     </div>
   );

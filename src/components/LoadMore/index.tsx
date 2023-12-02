@@ -6,6 +6,7 @@ import { useLocalStorage } from "@/src/hooks/useLocalStorage";
 import { Post } from "@/src/services/types/Posts";
 import { useGetPostsQuery } from "@/src/services/postsApi";
 import Posts from "@/src/components/Posts";
+import useScrollRestoration from "@/src/hooks/useScrollRestoration";
 
 type LoadMoreProps = {
   pageSSR?: number;
@@ -15,6 +16,8 @@ const LoadMore = ({ postsSSR = [], pageSSR = 0 }: LoadMoreProps) => {
   const [ref, inView] = useInView({
     threshold: 0,
   });
+
+  useScrollRestoration();
 
   const { storedValue: page, setStoredValue: setPage } = useLocalStorage(
     "page",
