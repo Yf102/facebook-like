@@ -11,7 +11,7 @@ export type Posts = {
   posts: Post[];
 };
 
-type Post = {
+export type Post = {
   id: number;
   title: string;
   image?: string;

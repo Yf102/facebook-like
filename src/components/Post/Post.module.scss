@@ -1,0 +1,14 @@
+.post-container {
+  @apply m-4 lg:m-8 px-5 py-8 flex flex-col;
+  gap: 1.5rem;
+  background-color: var(--light-gray);
+
+  .img-wrapper {
+    @apply relative w-full;
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+    background-color: var(--light-gray);
+  }
+}

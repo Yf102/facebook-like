@@ -10,10 +10,17 @@ body, #root {
   width: 100%;
 }
 
+h2 {
+  color:#222;
+  font-weight:600;
+  margin: 0;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --light-gray: #EFEFEF
 }
 
 @media (prefers-color-scheme: dark) {

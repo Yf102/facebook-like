@@ -34,7 +34,7 @@ $overlay-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
     bottom: 0;
-    background-color: #EFEFEF;
+    background-color: var(--light-gray);
     color: #000000;
     z-index: 1;
     overflow: auto;
