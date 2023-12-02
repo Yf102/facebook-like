@@ -8,6 +8,10 @@ import {
 } from "@reduxjs/toolkit/query/react";
 import { ApiErrorType } from "@/src/services/types/Error";
 
+const basePath = process.env?.API
+  ? process.env.API
+  : process.env.NEXT_PUBLIC_BASE_PATH;
+
 const baseQuery: BaseQueryFn<
   string | FetchArgs,
   unknown,
@@ -15,11 +19,11 @@ const baseQuery: BaseQueryFn<
   {},
   FetchBaseQueryMeta
 > = fetchBaseQuery({
-  baseUrl: "/api/",
+  baseUrl: basePath + "/api/",
   prepareHeaders(headers) {
-    if (process.env.NEXT_PUBLIC_X_API_KEY) {
+    if (process.env.X_API_KEY) {
       headers.set("accept", "application/json");
-      headers.set("X-Api-Key", process.env.NEXT_PUBLIC_X_API_KEY);
+      headers.set("X-Api-Key", process.env.X_API_KEY);
     }
     return headers;
   },
