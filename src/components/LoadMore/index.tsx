@@ -8,17 +8,21 @@ type LoadMoreProps = {
   isLoading: boolean;
 };
 const LoadMore = ({ onLoadMore, isLoading }: LoadMoreProps) => {
+  const [ref] = useInView({
+    threshold: 0,
+  });
 
   return (
-    <InView onChange={onLoadMore} threshold={0}>
-      {({ ref }) => (
-        <div
-          ref={ref}
-          className="flex justify-center items-center w-full mb-10"
-        >
-          <Spinner />
-        </div>
-      )}
+    <InView
+      onChange={(inView) => {
+        if (inView) {
+          onLoadMore();
+        }
+      }}
+    >
+      <div ref={ref} className="flex justify-center items-center w-full mb-10">
+        <Spinner />
+      </div>
     </InView>
   );
 };
