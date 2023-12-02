@@ -10,7 +10,7 @@ import { Post } from "@/src/services/types/Posts";
 const LobbyClient = () => {
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState<Post[]>([]);
-  const { data, error, refetch } = useGetPostsQuery({ page });
+  const { data, error, isLoading } = useGetPostsQuery({ page });
   const _error = error as ApiErrorType;
 
   useEffect(() => {
@@ -30,8 +30,8 @@ const LobbyClient = () => {
       )}
       {posts.length > 0 && (
         <div>
-          <Posts posts={posts} />;
-          <LoadMore onLoadMore={handleLoadMore} />
+          <Posts posts={posts} />
+          <LoadMore onLoadMore={handleLoadMore} isLoading={isLoading} />
         </div>
       )}
     </div>
