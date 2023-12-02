@@ -1,25 +1,37 @@
 "use client";
-import React from "react";
+import { useEffect, useState } from "react";
 import { useGetPostsQuery } from "@/src/services/postsApi";
 import styles from "@/src/styles/Page.module.scss";
 import { ApiErrorType } from "@/src/services/types/Error";
-import Image from "next/image";
-import Post from "@/src/components/Post";
+import LoadMore from "@/src/components/LoadMore";
+import Posts from "@/src/components/Posts";
+import { Post } from "@/src/services/types/Posts";
 
 const LobbyClient = () => {
-  const { data, error } = useGetPostsQuery({ page: 1 });
+  const [page, setPage] = useState(1);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const { data, error, refetch } = useGetPostsQuery({ page });
   const _error = error as ApiErrorType;
+
+  useEffect(() => {
+    if (data) {
+      setPosts((current) => [...current, ...data.posts]);
+    }
+  }, [data]);
+
+  const handleLoadMore = () => {
+    setPage((current) => current + 1);
+  };
 
   return (
     <div className={styles["page-container"]}>
       {error && (
         <div className="flex min-w-full justify-center items-center">{`${_error.status} - ${_error.data.data.error}`}</div>
       )}
-      {data && (
+      {posts.length > 0 && (
         <div>
-          {data.posts.map((post) => {
-            return <Post key={post.id} {...post} />;
-          })}
+          <Posts posts={posts} />;
+          <LoadMore onLoadMore={handleLoadMore} />
         </div>
       )}
     </div>
