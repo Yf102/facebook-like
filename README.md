@@ -1,3 +1,6 @@
+## Working PROD Version
+Working prod version can be found at https://posts.filiphristov.com/
+
 ## Getting Started
 
 First time
