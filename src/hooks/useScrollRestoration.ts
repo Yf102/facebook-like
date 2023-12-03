@@ -23,6 +23,7 @@ const useScrollRestoration = () => {
   useEffect(() => {
     element.current?.addEventListener("scroll", handleScroll);
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       element.current?.removeEventListener("scroll", handleScroll);
     };
   }, []);
