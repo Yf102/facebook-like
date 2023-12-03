@@ -9,3 +9,5 @@ services:
         NODE_VERSION: 20.10.0
     ports:
       - 8081:8081
+    tty: true
+    restart: on-failure
