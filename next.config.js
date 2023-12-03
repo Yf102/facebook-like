@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   images: {
     formats: ["image/webp"],
-    minimumCacheTTL: 60, // Do not cache nextjs images on nodejs for too long (cloudflare will cache them)
+    minimumCacheTTL: 3600,
     domains: ["picsum.photos"],
   },
   async rewrites() {
