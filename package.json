@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "cp .env.development .env.local && next dev",
     "build": "cp .env.production .env.local && next build",
-    "start": "next start",
+    "start": "next start -p 8081",
     "type-check": "tsc --noemit",
     "lint": "npm run type-check && next lint --max-warnings=1 --fix"
   },

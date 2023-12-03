@@ -6,6 +6,7 @@ First time
 npm i
 npm run dev
 ```
+Dev server will be accessible at http://localhost:3000
 
 Run a production build
 
@@ -13,6 +14,8 @@ Run a production build
 npm build
 npm run start
 ```
+
+Prod build will be accessible at http://localhost:8081
 
 ## Docker
 Build Docker image
@@ -24,6 +27,8 @@ From the second time onwards run Docker image
 ```bash
 docker-compose up -d
 ```
+
+Docker build will be accessible at http://localhost:8081
 
 ## Git Workflow
 
