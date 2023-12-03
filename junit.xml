@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="1" failures="0" errors="0" time="0.831">
-  <testsuite name="Posts" errors="0" failures="0" skipped="0" timestamp="2023-12-03T18:27:36" time="0.562" tests="1">
-    <testcase classname="Posts It renders multiple posts" name="Posts It renders multiple posts" time="0.023">
+<testsuites name="jest tests" tests="3" failures="0" errors="0" time="0.938">
+  <testsuite name="Posts" errors="0" failures="0" skipped="0" timestamp="2023-12-03T18:37:06" time="0.605" tests="3">
+    <testcase classname="Posts It renders multiple posts" name="Posts It renders multiple posts" time="0.022">
+    </testcase>
+    <testcase classname="Posts Render post with image" name="Posts Render post with image" time="0.005">
+    </testcase>
+    <testcase classname="Posts Render post with out image" name="Posts Render post with out image" time="0.002">
     </testcase>
   </testsuite>
 </testsuites>

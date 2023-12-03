@@ -1,10 +1,16 @@
 import { Post } from "@/src/services/types/Posts";
 
-const singlePostData: Post = {
+const singlePostDataWithImg: Post = {
   id: 1,
   title: "Testing title",
   image: "https://picsum.photos/id/209/854/480",
   content: "Testing content",
+};
+
+const singlePostDataWithOutImg: Post = {
+  id: 1,
+  title: "Testing title without image",
+  content: "Testing content without image",
 };
 
 const postsData: Post[] = [
@@ -17,4 +23,4 @@ const postsData: Post[] = [
   { id: 3, title: "Testing title 3", content: "Testing content 3" },
 ];
 
-export { singlePostData, postsData };
+export { singlePostDataWithImg, postsData, singlePostDataWithOutImg };
