@@ -1,9 +1,5 @@
-import { exec } from "child_process";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
-import util from "node:util";
-
-const execPromise = util.promisify(exec);
 
 export async function GET(request: NextRequest) {
   const resetPath = request.nextUrl.searchParams.get("path");
