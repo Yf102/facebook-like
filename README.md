@@ -38,3 +38,7 @@ Docker build will be accessible at http://localhost:8081
 - Feature branches use develop as their parent branch.
 - When a feature is complete, it gets merged back into develop.
 - Features should never interact directly with master.
+
+
+##  Supported browsers
+https://nextjs.org/docs/architecture/supported-browsers
