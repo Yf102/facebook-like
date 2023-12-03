@@ -1,6 +1,8 @@
 version: '3.7'
 services:
   posts-app:
+    image: posts-app
+    container_name: posts-app
     build:
       context: .
       dockerfile: ./Dockerfile
