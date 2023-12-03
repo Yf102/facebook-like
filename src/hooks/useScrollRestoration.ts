@@ -11,7 +11,6 @@ const useScrollRestoration = () => {
 
   const loadScrollPosition = () => {
     const storedScrollPosition = localStorage.getItem("scrollPosition");
-    console.log("storedScrollPosition", storedScrollPosition);
     if (storedScrollPosition) {
       element.current?.scrollTo(0, parseInt(storedScrollPosition, 10));
     }
